@@ -1,8 +1,9 @@
 import styles from "../styles/BlogCard.module.css";
 import Link from "next/link";
-/*import Image from "next/image";*/
+import Image from "next/image";
+import moment from "moment";
 
-function BlogCard({ title, slug, tags, date, postUrl, excerpt, author, coverImage }) {
+function BlogCard({ title, slug, date, postUrl, excerpt, author, coverImage }) {
   return (
     <div className={styles.card}>
         <Link href={`/posts/${slug}`}>
@@ -12,15 +13,16 @@ function BlogCard({ title, slug, tags, date, postUrl, excerpt, author, coverImag
                 </a>
             </div>
         </Link>
-        <div className={styles.text}>
+        <div className={styles.titletext}>
             <h2>{title}</h2>
         </div>
-        <div className={styles.details}>
+        <div className={styles.bodytext}>
             <div className={styles.author}>
+                <h3>{styles.date}</h3>
+                    {moment(date).format("MMMM Do, YYYY")}
+                <br></br>
                 <h3>{author.name}</h3>
-                {/*<h3>{moment(date).format("MMMM d, YYYY")}</h3>*/}
                 <h3>{excerpt}</h3>
-                <h3>{tags}</h3>
             </div>
         </div>
     </div>
